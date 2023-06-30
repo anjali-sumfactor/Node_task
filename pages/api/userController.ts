@@ -3,11 +3,11 @@ import bcrypt from 'bcrypt';
 
 import { executeQuery } from '../../lib/Database/connectDatabase';
 
-export default async function connection(req: NextApiRequest, res: NextApiResponse) {
+export default async function userController(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         return new Promise(async (resolve, reject) => {
             try {
-                let { email, password } = req.body
+                let { email, password, token } = req.body
                 // console.log(req.body);
                 // const sqlQuery = `insert into user_new_table (email,password)values("anjali@gmail.com", "anjali@12345")`
 
@@ -28,7 +28,19 @@ export default async function connection(req: NextApiRequest, res: NextApiRespon
                 //=======================================================================
 
 
-                const sqlQuery = `insert into user_new_table (email,password)values('${email}', '${hashedPassword}')`
+                //=========================== SELECT QUERY ===========================
+                // const sqlQuery = `select * from user_new_table`
+
+
+                //=========================== UPDATE QUERY ===========================
+                // const sqlQuery = `update user_new_table set f_name='Archana' where token=11223`
+
+
+                //=========================== DELETE QUERY ===========================
+                // const sqlQuery = `delete from user_new_table where token=67239`
+
+
+                const sqlQuery = `insert into user_new_table (email,password)values('${email}', '${hashedPassword}', '${token}')`
 
                 let response = await executeQuery(sqlQuery);
 
