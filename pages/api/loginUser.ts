@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from 'bcrypt';
 
 import { executeQuery } from '../../lib/Database/connectDatabase';
-import { generateJwtToken, refreshAccessToken } from "../../lib/server";
+import { generateJwtToken, refreshAccessToken } from "../../lib/JWT-token/server";
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
