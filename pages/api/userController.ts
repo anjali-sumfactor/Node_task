@@ -6,12 +6,12 @@ import { executeQuery } from '../../lib/Database/connectDatabase';
 export default async function userController(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         try {
-            let { email, password, token } = req.body
+            let { first_name, last_name, email, password, token } = req.body
             // console.log(req.body);
             // const sqlQuery = `insert into user_new_table (email,password)values("anjali@gmail.com", "anjali@12345")`
 
             //=========================== AVOID DUPLICACY ===========================
-            const getRecord = `select * from user_new_table where email='${email}'`
+            const getRecord = `select * from user_table where email='${email}'`
 
             let resultset: any = await executeQuery(getRecord);
 
@@ -28,18 +28,18 @@ export default async function userController(req: NextApiRequest, res: NextApiRe
 
 
             //=========================== SELECT QUERY ===========================
-            // const sqlQuery = `select * from user_new_table`
+            // const sqlQuery = `select * from user_table`
 
 
             //=========================== UPDATE QUERY ===========================
-            // const sqlQuery = `update user_new_table set f_name='Archana' where token=11223`
+            // const sqlQuery = `update user_table set f_name='Archana' where token=11223`
 
 
             //=========================== DELETE QUERY ===========================
-            // const sqlQuery = `delete from user_new_table where token=67239`
+            // const sqlQuery = `delete from user_table where token=67239`
 
 
-            const sqlQuery = `insert into user_new_table (email,password,token)values('${email}', '${hashedPassword}', '${token}')`
+            const sqlQuery = `insert into user_table (first_name, last_name,email,password,token)values('${first_name}','${last_name}','${email}', '${hashedPassword}', '${token}')`
 
             let response = await executeQuery(sqlQuery);
 
