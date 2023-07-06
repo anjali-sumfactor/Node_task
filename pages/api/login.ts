@@ -5,7 +5,7 @@ import { executeQuery } from '../../lib/Database/connectDatabase';
 import { generateJwtToken, refreshAccessToken } from "../../lib/JWT-token/service";
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
-    console.log(req.body, "in body")
+    // console.log(req.body, "in body")
     if (req.method == 'POST') {
         try {
             const { email, password } = req.body;

@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "lib/JWT-token/server.ts"  ],
+, "lib/JWT-token/service.ts"  ],
   "exclude": [
     "node_modules"
   ]
