@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 export default function Registration() {
   const [first_name, setFirstName] = useState('');
@@ -46,7 +46,7 @@ export default function Registration() {
 
   return (
     <>
-    <h1>Registration Form</h1>
+      <h1>Registration Form</h1>
       <form onSubmit={handleRegistration}>
         <div>
           <label htmlFor="first_name">First Name: </label>

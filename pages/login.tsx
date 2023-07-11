@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const router = useRouter();
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    router.push('/getAllUserData')
+  }
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -53,7 +61,8 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" >Login</button>
+        <button onClick={handleClick}>Get all user</button>
       </form>
     </>
   )
